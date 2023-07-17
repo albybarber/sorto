@@ -39,11 +39,22 @@ const WebcamCapture = () => {
                formData.append('query_image', file);
 
             
-        axios.post('https://api.brickognize.com/predict/', formData, {
-            headers: {
-                'accept': 'application/json',
-                'Content-Type': 'multipart/form-data'
-            }
+        // axios.post('https://api.brickognize.com/predict/', formData, {
+        //     headers: {
+        //         'accept': 'application/json',
+        //         'Content-Type': 'multipart/form-data'
+        //     }
+        // })
+        // .then(function (response) {
+        // console.log(response);
+        // })
+        // .catch(function (error) {
+        // console.log(error);
+        // });
+
+
+        axios.post('/hello-world',{
+
         })
         .then(function (response) {
         console.log(response);
