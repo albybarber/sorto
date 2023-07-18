@@ -4,7 +4,8 @@ import React from 'react';
 
 import './App.css';
 
-import WebcamComponent from './components/Webcam'
+import WebcamComponent from './components/Webcam';
+import Devices from './components/Devices';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
         <div className="App-header">
             <WebcamComponent />
+            <Devices />
         </div>
     </div>
   );

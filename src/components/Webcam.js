@@ -8,6 +8,8 @@ const WebcamCapture = () => {
 
     const [images, setImage] = useState([]);
     const [count, setCount] = useState(0);
+    const [message, setMessage] = useState('');
+    const [legoDataItems, setLegoDataItems] = useState([])
 
 
     const webcamRef = React.useRef(null);
@@ -24,46 +26,15 @@ const WebcamCapture = () => {
         setImage([...images, imageSrc]);
         setCount(count + 1);
 
-        console.log(imageSrc)
-
-              var data=(imageSrc).split(',')[1];
-               var binaryBlob = atob(data);
-            //    console.log(binaryBlob);
-
-            //    var file = new Blob([binaryBlob], {type: 'image/jpeg'});
-               var file = new File([binaryBlob], 'lego.jpg');
-       
-            console.log(file)
-
-               var formData = new FormData();
-               formData.append('query_image', file);
-
-            
-        // axios.post('https://api.brickognize.com/predict/', formData, {
-        //     headers: {
-        //         'accept': 'application/json',
-        //         'Content-Type': 'multipart/form-data'
-        //     }
-        // })
-        // .then(function (response) {
-        // console.log(response);
-        // })
-        // .catch(function (error) {
-        // console.log(error);
-        // });
-
-
-        axios.post('/hello-world',{
-
-        })
-        .then(function (response) {
-        console.log(response);
-        })
-        .catch(function (error) {
-        console.log(error);
-        });
-
-
+        axios.post('/api/hello-world', {image: imageSrc})
+            .then(response => {
+                setMessage(response.data.message);
+                setLegoDataItems(response.data.items)
+                console.log(response.data.items)
+            })
+            .catch(error => {
+              console.log(error);
+            });
 
     }
 
@@ -74,13 +45,22 @@ const WebcamCapture = () => {
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                videoConstraints={{ deviceId: '9575bbe07b0728800fb68fb57e283e094db1af7981829a3f6ffe17d46ee395e3' }} 
+                videoConstraints={{ deviceId: 'da1881c544191b89dfdebda5a52b3ea2f1b29f39efd3750fbead40a91e47cc2e' }} 
             />
             <button onClick={handleClick}>Capture photo - You pressed me {count} times</button>
 
 
             {images.map((src,key) => 
-                <img width="100px" key={key} src={src} />
+                <img width="100px" key={key} src={src} alt="ssd" />
+            )}
+
+            <p>{message}</p>
+
+            {legoDataItems.map((item,key) =>
+                <>
+                    <h3>{item.name}</h3>
+                    <img width="100px" key={key} src={item.img_url} alt="ssd" />
+                </>
             )}
 
         </div>
