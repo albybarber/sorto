@@ -22,10 +22,10 @@ const Devices = () => {
     return (
       <>
         {devices.map((device, key) => (
-            <div>
-              <Webcam key={key} width='100' audio={false} videoConstraints={{ deviceId: device.deviceId }} />
-              {device.label || `Device ${key + 1}`}
-              {device.deviceId}
+            <div key={`device-${key}`}>
+              <Webcam width='100' audio={false} videoConstraints={{ deviceId: device.deviceId }} />
+              {/* {device.label || `Device ${key + 1}`} */}
+              {/* {device.deviceId} */}
             </div>
   
           ))}

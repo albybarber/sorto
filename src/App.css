@@ -1,38 +1,138 @@
-.App {
+html:not([lang=ko]):not([lang=zh]):not([lang=ja])>body {
+  font-family: Cera Pro,sans-serif;
+}
+
+body {
+  width: 100%;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  color: #2c2c2c;
+  background: #fff;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 0.9375rem;
+  border-style: solid;
+  border-radius: 4px;
+  border-collapse: collapse;
   text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5625rem;
+  background-color: rgb(253, 128, 36);
+  border-color: rgb(253, 128, 36);
+  color: rgb(0, 0, 0);
+  position: relative;
+  border-width: 2px;
+  cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button:hover {
+  background-color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.lego-part--name, 
+.lego-part--id {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.6875rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.lego-part--name {
+  border-bottom: 3px solid #2c2c2c;
+}
+
+.lego-part--id {
+  font-weight: 600;
+}
+
+.lego-main {
+  display: grid;
+  grid-template-areas:
+    "webcam base"
+    "button button"
+    "capture capture";
+  /* grid-template-rows: 3fr 1fr 1fr; */
+  grid-template-columns: 1fr 1fr;
+  max-width: 100rem;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.lego-header {
+  grid-area: header;
+  background-color: rgb(255, 207, 0);
+}
+
+.lego-webcam {
+  grid-area: webcam;
+  /* background-color: #ffa08c; */
+
+  min-width: 480px;
+}
+
+.lego-webcam video {
+  width: 100%;
+}
+
+.lego-baseplate,
+.lego-webcam {
+  margin-bottom: 5px;
+}
+
+.lego-baseplate {
+  grid-area: base;
+  /* background-color: red; */
+}
+
+.lego-part {
+  grid-area: part;
+  /* background-color: lime; */
+  padding: 20px;
+}
+
+.lego-part--image {
+  max-height: 230px;
+}
+
+.lego-part--link {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: flex-end;
+}
+
+.lego-part--link img {
+  width: 100px;
+}
+
+.lego-devices {
+  grid-area: devices;
+  /* background-color: blue; */
+  display: inline-flex;
+  width: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.lego-button {
+  grid-area: button; 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.lego-capture {
+  grid-area: capture;
+  /* background-color: gold; */
+  display: inline-flex;
+  width: 100%;
+  justify-content: left;
+  padding-top: 10px;
 }
+
+.lego-logo {
+  width: 60px;
+  margin: 10px 20px;
+}
+
