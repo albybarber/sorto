@@ -26,7 +26,7 @@ const WebcamCapture = () => {
         setImage([...images, imageSrc]);
         setCount(count + 1);
 
-        axios.post('/api/hello-world', {image: imageSrc})
+        axios.post('/api/lego-predict', {image: imageSrc})
             .then(response => {
                 setMessage(response.data.message);
                 setLegoDataItems(response.data.items)
@@ -51,7 +51,7 @@ const WebcamCapture = () => {
 
 
             {images.map((src,key) => 
-                <img width="100px" key={key} src={src} alt="ssd" />
+                <img width="100px" key={`img-${key}`} src={src} alt="ssd" />
             )}
 
             <p>{message}</p>
@@ -59,7 +59,7 @@ const WebcamCapture = () => {
             {legoDataItems.map((item,key) =>
                 <>
                     <h3>{item.name}</h3>
-                    <img width="100px" key={key} src={item.img_url} alt="ssd" />
+                    <img width="100px" kkey={`part-${key}`} src={item.img_url} alt="ssd" />
                 </>
             )}
 
