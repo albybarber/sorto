@@ -60,6 +60,7 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             body: JSON.stringify({
                 items: response.data.items,
+                bounding_box: response.data.bounding_box,
                 message: 'we found it',
                 event: event,
             })

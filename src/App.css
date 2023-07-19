@@ -1,3 +1,8 @@
+:root {
+  --lego-yellow : rgb(255, 207, 0);
+  --lego-action : rgb(253, 128, 36);
+}
+
 html:not([lang=ko]):not([lang=zh]):not([lang=ja])>body {
   font-family: Cera Pro,sans-serif;
 }
@@ -25,8 +30,8 @@ button {
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5625rem;
-  background-color: rgb(253, 128, 36);
-  border-color: rgb(253, 128, 36);
+  background-color: var(--lego-action);
+  border-color: var(--lego-action);
   color: rgb(0, 0, 0);
   position: relative;
   border-width: 2px;
@@ -65,9 +70,19 @@ button:hover {
   padding: 10px;
 }
 
+@media screen and (max-width: 920px) {
+
+  .lego-main {
+    display: block;
+  }
+  
+}
+
+
+
 .lego-header {
   grid-area: header;
-  background-color: rgb(255, 207, 0);
+  background-color: var(--lego-yellow);
 }
 
 .lego-webcam {
@@ -118,8 +133,25 @@ button:hover {
   justify-content: center;
 }
 
+.lego-devices--camera {
+  cursor: pointer;
+}
+
+.lego-devices--camera:nth-child(n+2) {
+  margin-left: 5px;
+}
+
+
+
+.lego-devices--camera:hover video{
+  outline: 3px dashed var(--lego-action);
+}
+
 .lego-button {
-  grid-area: button; 
+  grid-area: button;
+  position: absolute;
+  top: 12px;
+  right: 10px;
 }
 
 .lego-capture {
@@ -136,3 +168,33 @@ button:hover {
   margin: 10px 20px;
 }
 
+
+
+.target-box-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.target-box {
+  border: 2px solid red;
+  content: "";
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+
+.target-box {
+  animation-name: fadeIn;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;  
+}
+
+.target-box.fadeOut {
+  animation-delay: 3s;
+  animation-duration: 0.25s;
+  animation-name: fadeOut;
+}
+
+@keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
