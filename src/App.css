@@ -82,6 +82,7 @@ button:hover {
 
 .lego-header {
   grid-area: header;
+  height: 84px;
   background-color: var(--lego-yellow);
 }
 
@@ -152,6 +153,7 @@ button:hover {
   position: absolute;
   top: 12px;
   right: 10px;
+  left: 10px;
 }
 
 .lego-capture {
